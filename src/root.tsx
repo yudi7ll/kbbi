@@ -14,6 +14,7 @@ import {
   Title,
 } from "solid-start";
 import "./root.css";
+import logo from './assets/logo.svg'
 
 export default function Root() {
   const location = useLocation();
@@ -24,26 +25,29 @@ export default function Root() {
   return (
     <Html lang="en">
       <Head>
-        <Title>SolidStart - With TailwindCSS</Title>
+        <Title>KBBI | Kamus Besar Bahasa Indonesia</Title>
         <Meta charset="utf-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Body>
         <Suspense>
           <ErrorBoundary>
-            <nav class="bg-sky-800">
-              <ul class="container flex items-center p-3 text-gray-200">
-                <li class={`border-b-2 ${active("/")} mx-1.5 sm:mx-6`}>
-                  <A href="/">Home</A>
-                </li>
-                <li class={`border-b-2 ${active("/about")} mx-1.5 sm:mx-6`}>
-                  <A href="/about">About</A>
-                </li>
-              </ul>
-            </nav>
-            <Routes>
-              <FileRoutes />
-            </Routes>
+            <div class="max-w-4xl mx-auto">
+              <nav class="my-8 flex items-center justify-between">
+                <div>
+                  <a href="/">
+                    <img class="w-12" src={logo} alt="logo" />
+                  </a>
+                </div>
+                <div class="space-x-4 flex items-center">
+                  <a class="font-bold text-gray-700" href="/register">Daftar</a>
+                  <a class="font-bold text-gray-700" href="/login">Masuk</a>
+                </div>
+              </nav>
+              <Routes>
+                <FileRoutes />
+              </Routes>
+            </div>
           </ErrorBoundary>
         </Suspense>
         <Scripts />
