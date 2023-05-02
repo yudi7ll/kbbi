@@ -32,7 +32,7 @@ export default function Root() {
       <Body>
         <Suspense>
           <ErrorBoundary>
-            <div class="max-w-4xl mx-auto">
+            <div class="max-w-4xl mx-auto px-4">
               <nav class="my-8 flex items-center justify-between">
                 <div>
                   <a href="/">
