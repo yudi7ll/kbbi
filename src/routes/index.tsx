@@ -1,25 +1,30 @@
 import { createResource, createSignal, For } from "solid-js";
-import search from '../assets/icons/search.svg'
+import SearchIcon from '../assets/icons/search.svg?component-solid'
 
 interface IResponse {
-  data?: {
-    lema: string
-    arti: {
-      deskripsi: string
-      kelas_kata: string
-    }[]
-  }[]
-  message: string
   status: boolean
+  message?: string
+  data?: {
+    kata: string
+    data: {
+      lema: string
+      arti: {
+        deskripsi: string
+        kelasKata: string
+      }[]
+    }[]
+  }
 }
 
 const getByKeyword = async (keyword: string) => {
-  const result = await fetch(`${import.meta.env.VITE_API_URL}/cari/${keyword}`)
-  return await result.json() as IResponse
+  const result = await fetch(`${import.meta.env.VITE_API_URL}/kbbi/${keyword}`)
+  const json: IResponse = await result.json()
+  console.log(json)
+  return json
 }
 
 export default function Home() {
-  const [keyword, setKeyword] = createSignal('kata')
+  const [keyword, setKeyword] = createSignal('cengkong')
   const [data] = createResource(keyword, getByKeyword)
 
   return (
@@ -32,10 +37,8 @@ export default function Home() {
             value={keyword()}
             onChange={e => setKeyword(e.currentTarget.value)}
           />
-          <img
+          <SearchIcon
             class="absolute right-0 top-1/2 transform -translate-y-1/2 mr-4 w-6"
-            src={search}
-            alt="search icon"
           />
         </div>
       </div>
@@ -43,7 +46,7 @@ export default function Home() {
         {!data()?.status ? (
           <p class="text-center mt-4 text-red-500 text-sm">{data()?.message}</p>
         ) : (
-          <For each={data()?.data ?? []}>
+          <For each={data()?.data?.data ?? []}>
             {(kbbi) => (
               <div>
                 <h2 class="font-bold text-gray-800 text-5xl my-4">{kbbi.lema}</h2>

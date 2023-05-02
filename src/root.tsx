@@ -14,7 +14,7 @@ import {
   Title,
 } from "solid-start";
 import "./root.css";
-import logo from './assets/logo.svg'
+import Logo from './assets/logo.svg?component-solid'
 
 export default function Root() {
   const location = useLocation();
@@ -36,7 +36,7 @@ export default function Root() {
               <nav class="my-8 flex items-center justify-between">
                 <div>
                   <a href="/">
-                    <img class="w-12" src={logo} alt="logo" />
+                    <Logo class="w-12 h-auto" />
                   </a>
                 </div>
                 <div class="space-x-4 flex items-center">
