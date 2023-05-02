@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <main>
-      < div >
+      <div>
         <div class='relative'>
           <input class="rounded-lg bg-slate-200 text-gray-800 w-full px-4 py-3 border-gray-600 outline-0 transition"
             type="text"
@@ -67,6 +67,6 @@ export default function Home() {
           </For>
         )}
       </div>
-    </main >
+    </main>
   );
 }
