@@ -25,7 +25,7 @@ const getByKeyword = async (keyword: string) => {
 }
 
 export default function Home() {
-  const [keyword, setKeyword] = createSignal('bianglala')
+  const [keyword, setKeyword] = createSignal('')
   const [data] = createResource(keyword, getByKeyword)
 
   return (
